@@ -4,7 +4,7 @@ const axios = require('axios');
 const path = require('path');
 
 const app = express();
-const PORT = 3001;
+const PORT = 8000;
 
 // Middleware
 app.use(cors());
@@ -14,9 +14,9 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Databricks configuration
-const DATABRICKS_HOST = 'https://adb-xxx.11.azuredatabricks.net';
-const DATABRICKS_TOKEN = 'dapixxx';
-const SERVING_ENDPOINT = 'databricks-claude-sonnet-4';
+const DATABRICKS_HOST = process.env.DATABRICKS_HOST;
+const DATABRICKS_TOKEN = process.env.DATABRICKS_TOKEN;
+const SERVING_ENDPOINT = process.env.SERVING_ENDPOINT;
 
 // Proxy endpoint for chat completions
 app.post('/api/chat', async (req, res) => {
@@ -52,8 +52,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-  console.log(`Frontend: http://localhost:${PORT}`);
-  console.log(`API: http://localhost:${PORT}/api/chat`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on http://0.0.0.0:${PORT}`);
+  console.log(`Frontend: http://0.0.0.0:${PORT}`);
+  console.log(`API: http://0.0.0.0:${PORT}/api/chat`);
 });
