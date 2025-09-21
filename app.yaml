@@ -1,5 +1,8 @@
 command: ["node", "index.js"]
 env:
-  DATABRICKS_HOST: "https://your-workspace-url"
-  DATABRICKS_TOKEN: "your-databricks-token"
-  SERVING_ENDPOINT: "databricks-claude-sonnet-4"
+  - name: DATABRICKS_HOST
+    value: "https://your-workspace-url"
+  - name: DATABRICKS_TOKEN
+    value: "your-databricks-token"
+  - name: SERVING_ENDPOINT
+    value: "databricks-claude-sonnet-4"
