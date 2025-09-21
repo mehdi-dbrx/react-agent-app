@@ -1,4 +1,4 @@
-# React Chatbot App
+# Databricks React Chatbot App
 
 A modern React-based chatbot application with Databricks integration.
 
